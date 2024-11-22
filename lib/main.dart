@@ -29,7 +29,7 @@ class HealthMitra extends StatelessWidget {
       title: 'Health Mitra',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: kBGColor,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 20, 136, 121),
         textTheme: Theme.of(context).textTheme.apply(
           bodyColor: kPriColor,
         ),
