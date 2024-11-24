@@ -34,10 +34,6 @@ class _SignUpState extends State<SignUp> {
       print('User  created: ${response.body}');
       _showDialog('Signup Successful', 'You have successfully signed up!');
       // Optionally navigate to the login page
-    } else if (response.statusCode == 400) {
-      // Handle error
-      print('Failed to create user: ${response.body}');
-      _showSnackBar('Signup Failed', 'Password must be at least 6 characters long.');
     } else {
       // Handle error
       print('Failed to create user: ${response.body}');
@@ -198,6 +194,10 @@ class _SignUpState extends State<SignUp> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
+                        }
+                        if (value.length < 6) {
+                          return 'Password must be at least 6 characters long';
+                          
                         }
                         return null;
                       },
