@@ -22,7 +22,7 @@ class _LoginAuthState extends State<LoginAuth> {
             end: Alignment.bottomCenter,
             colors: [
               Color.fromARGB(255, 96, 196, 226),
-              Color.fromARGB(214, 87, 226, 238)
+              Color.fromARGB(214, 87, 226, 238),
             ],
           ),
         ),

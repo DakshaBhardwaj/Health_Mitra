@@ -3,6 +3,9 @@ import 'package:project2024/firebase_options.dart';
 import 'package:project2024/pages/login.dart';
 import 'package:project2024/pages/signuppage.dart';
 import 'package:project2024/pages/homepage.dart';
+import 'package:project2024/pages/med_records.dart';
+import 'package:project2024/pages/profile.dart';
+import 'package:project2024/pages/remainders.dart';
 import 'package:project2024/utils/constant.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -22,6 +25,9 @@ class HealthMitra extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'login',
       routes: {
+        'profile' : (context) => const Profile(),
+        'reminders' : (context) => const Reminders(),
+        'records' : (context) => const MedRecords(),
         'login' : (context) => const LoginAuth(),
         'register' : (context) => const SignUp(),
         'mainpage' : (context) => const HomeScreen()
@@ -29,7 +35,7 @@ class HealthMitra extends StatelessWidget {
       title: 'Health Mitra',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 20, 136, 121),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 183, 245, 237),
         textTheme: Theme.of(context).textTheme.apply(
           bodyColor: kPriColor,
         ),
