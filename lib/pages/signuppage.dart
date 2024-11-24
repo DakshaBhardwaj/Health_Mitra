@@ -17,7 +17,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController passwordController = TextEditingController();
 
   Future<void> signUp(String username, String email, String password) async {
-    final url = Uri.parse('http://10.0.2.2:5000/register'); // Replace with your backend URL
+    final url = Uri.parse('https://f846-110-227-57-221.ngrok-free.app/register'); // Replace with your backend URL
 
     final response = await http.post(
       url,
