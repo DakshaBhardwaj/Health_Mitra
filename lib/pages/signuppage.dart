@@ -32,12 +32,46 @@ class _SignUpState extends State<SignUp> {
     if (response.statusCode == 201) {
       // User created successfully
       print('User  created: ${response.body}');
-      // Navigate to the login page or show a success message
+      _showDialog('Signup Successful', 'You have successfully signed up!');
+      // Optionally navigate to the login page
+    } else if (response.statusCode == 400) {
+      // Handle error
+      print('Failed to create user: ${response.body}');
+      _showSnackBar('Signup Failed', 'Password must be at least 6 characters long.');
     } else {
       // Handle error
       print('Failed to create user: ${response.body}');
-      // Show an error message to the user
+      _showDialog('Signup Failed', 'User  already exists. Go back to login page.');
     }
+  }
+
+
+  void _showSnackBar(String title, String message) {
+    final snackBar = SnackBar(
+      content: Text('$title: $message'),
+      duration: const Duration(seconds: 3),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void _showDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget topWidget(double screenWidth) {
@@ -135,6 +169,17 @@ class _SignUpState extends State<SignUp> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your email';
                         }
+                        // Check for '@' symbol
+                        if (!value.contains('@')) {
+                          // Show a dialog if '@' is missing
+                          _showSnackBar('Invalid Email', 'Please enter a valid email address that contains an "@" symbol.');
+                          return null; // Return null to indicate no validation error, since the dialog will inform the user
+                        }
+                        // Regular expression for validating email format
+                        final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+                        if (!emailRegex.hasMatch(value)) {
+                          return 'Please enter a valid email address';
+                        }
                         return null;
                       },
                     ),
@@ -162,25 +207,23 @@ class _SignUpState extends State<SignUp> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           signUp(nameController.text, emailController.text, passwordController.text);
-                          print('sign up successful');
-                        }
-                        else{
+                          
+                        } else {
                           print('sign up failed');
                         }
                       },
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(
-                        fontSize: 20,
-                        decoration: TextDecoration.underline,
-                        color: Color.fromARGB(243, 11, 70, 93),
+                          fontSize: 20,
+                          decoration: TextDecoration.underline,
+                          color: Color.fromARGB(243, 11, 70, 93),
                         ),
                       ),
                     ),
                     const SizedBox(height: 35),
-
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pushNamed(context, 'login');
                       },
                       child: const Text(
@@ -192,7 +235,6 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
-                    
                   ],
                 ),
               ),
