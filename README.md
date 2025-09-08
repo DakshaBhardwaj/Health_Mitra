@@ -190,10 +190,7 @@ The application follows a clean architecture pattern with:
 5. Open a Pull Request
 
 ## 👨‍💻 Author
-
-**Daksha Bhardwaj**
 - GitHub: [@DakshaBhardwaj](https://github.com/DakshaBhardwaj)
-**Saransh Gupta**
 - GitHub: [@SaranshGupta](https://github.com/SaranshG2501)
 
 ## 🙏 Acknowledgments
@@ -204,3 +201,4 @@ The application follows a clean architecture pattern with:
 - The open-source community for inspiration and support
 
 **Note**: This is a Flutter project with Firebase integration. Make sure you have Flutter and Firebase CLI installed and properly configured before running the application.
+
