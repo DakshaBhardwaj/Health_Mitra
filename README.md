@@ -193,12 +193,6 @@ The application follows a clean architecture pattern with:
 - GitHub: [@DakshaBhardwaj](https://github.com/DakshaBhardwaj)
 - GitHub: [@SaranshGupta](https://github.com/SaranshG2501)
 
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Firebase team for backend services
-- University project collaborators
-- The open-source community for inspiration and support
-
 **Note**: This is a Flutter project with Firebase integration. Make sure you have Flutter and Firebase CLI installed and properly configured before running the application.
+
 
